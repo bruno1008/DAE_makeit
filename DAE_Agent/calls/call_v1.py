@@ -2,12 +2,18 @@ import requests
 import time
 from fastapi import FastAPI, Form, HTTPException
 from fastapi.responses import HTMLResponse
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Carrega variáveis do .env
+
+
 
 app = FastAPI()
 
 # Vapi API configuration
 VAPI_BASE_URL = "https://api.vapi.ai"
-API_TOKEN = "7d550746-272a-4f20-9918-908c562aa4a3"
+API_TOKEN = os.getenv("VAPI_API_TOKEN")
 HEADERS = {
     "Authorization": f"Bearer {API_TOKEN}",
     "Content-Type": "application/json"
